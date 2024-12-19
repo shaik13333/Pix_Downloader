@@ -7,17 +7,24 @@ import upload from "./Assets/upload.svg";
 export default function Themaincontent() {
     let [api, setApi] = useState([]);
     let [search, setSearch] = useState("");
+    let [click, setClick] = useState("");
     let navigate = useNavigate();
     let change = (e) => {
         setSearch(e.target.value);
     };
+
+    let clickk = (text)=>{
+        setSearch(text);
+        console.log(text);
+    }
+   
 
     
 
     useEffect(() => {
         let api = fetch(`https://pixabay.com/api/?key=46193687-1ee9f7465fd5eeca96a352d5f&q=${search}&image_type=photo`)
         api.then(res => res.json()).then(val => setApi(val.hits));
-    });
+    },[search]);
     return(
         <>
             <nav>
@@ -50,30 +57,29 @@ export default function Themaincontent() {
             </div>
 
             <div className="navigation-buttons">
-                <button className="btn-style">Home</button>
+                {/* <button className="btn-style">Home</button>
                 <button className="btn-style">Photos</button>
                 <button className="btn-style">Illustrations</button>
                 <button className="btn-style">Vector</button>
                 <button className="btn-style">Videos</button>
                 <button className="btn-style">Music</button>
-                <button className="btn-style">Sound Effects</button>
-                <button className="btn-style">GIFS</button>
+                <button className="btn-style">Sound Effects</button> */}
+                {/* <button className="btn-style">GIFS</button> */}
             </div> 
-            <br /> <br />
+            <br /> 
 
             <div className="suggestion-buttons">
-                <button className="btn-style1">Background</button>
-                <button className="btn-style1">Wallpaper</button>
-                <button className="btn-style1">Flowers</button>
-                <button className="btn-style1">Woman</button>
-                <button className="btn-style1">Landscape</button>
-                <button className="btn-style1">People</button>
-                <button className="btn-style1">Money</button>
-                <button className="btn-style1">Sea</button>
-                <button className="btn-style1">Travel</button>
-                <button className="btn-style1">School</button>
-                <button className="btn-style1">House</button>
-                <button className="btn-style1">Iphone Wallpaper</button>
+                <button className="btn-style1" onClick={()=>clickk("background")}>Background</button>
+                <button className="btn-style1" onClick={()=>clickk("wallpaper")}>Wallpaper</button>
+                <button className="btn-style1" onClick={()=>clickk("flower")}>Flowers</button>
+                <button className="btn-style1" onClick={()=>clickk("flower")}>Woman</button>
+                <button className="btn-style1" onClick={()=>clickk("landscape")}>Landscape</button>
+                <button className="btn-style1" onClick={()=>clickk("people")}>People</button>
+                <button className="btn-style1" onClick={()=>clickk("money")}>Money</button>
+                <button className="btn-style1" onClick={()=>clickk("sea")}>Sea</button>
+                <button className="btn-style1" onClick={()=>clickk("travel")}>Travel</button>
+                <button className="btn-style1" onClick={()=>clickk("school")}>School</button>
+                <button className="btn-style1" onClick={()=>clickk("house")}>House</button>
                 <span style={{borderRight:"0.5px solid #00000085", marginLeft:"450px"}}></span>
                 <button className="btn-style1" style={{marginLeft:"20px", border:"none"}}>
                     <img style={{height: "18px", marginBottom: "-4px"}} src={setting} alt="Settings" />
